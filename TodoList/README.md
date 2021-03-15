@@ -318,8 +318,8 @@ function handleInitialData() {
 ```
 
 ### 08_redux_react_context
-- Define `Connected` component for using `store` inside decendent components of `App` component with [Context in React](https://reactjs.org/docs/context.html).
-- `App` component can access to `store` by `props`.
+- Define `Provider` component to provide `store` to decendent components by [Context in React](https://reactjs.org/docs/context.html).
+- Define `Connected` component to getting `store` in the component such as `App` component. `App` component can access to `store` by `props`.
 
 ```
 class ConnectedApp extends React.Component {
@@ -429,7 +429,7 @@ const ConnectedApp = connect((state) => ({
 - Pratice to implement `connect` function.
 
 ### 11_redux_react_connect_with_lib
-- `connect` function can be used by `react-redux` library.
+- `Provider` component and `connect` function can be used by `react-redux` library.
 ```
 <script src="https://unpkg.com/react-redux@5.0.6/dist/react-redux.min.js"></script>
 ```
@@ -437,9 +437,15 @@ const ConnectedApp = connect((state) => ({
 const ConnectedApp = ReactRedux.connect((state) => ({
   loading: state.loading,
 }))(App);
+
+ReactDOM.render(
+  <ReactRedux.Provider store={store}>
+    <ConnectedApp />
+  </ReactRedux.Provider>,
+  document.getElementById("app"));
 ```
 
 ### 12_redux_react_lib_folderstructure
-- This folder is `Todo List` app with the folder structure.
+- This folder is `Todo List` app with the folder structure for handling data with `redux`.
 - This folder is created by `create-react-app`.
-- [Go to this folder](https://github.com/reactHong/redux-examples/tree/main/Todo%20List/12_redux_react_lib_folderstructure)
+- [Go to this folder](https://github.com/reactHong/redux-examples/tree/main/TodoList/12_redux_react_lib_folderstructure)
